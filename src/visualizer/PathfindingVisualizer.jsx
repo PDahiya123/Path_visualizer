@@ -1,9 +1,7 @@
 import React, {Component} from 'react';
 import Node from './Node/Node';
 import {dijkstra} from '../algorithms/dijkstra';
-//import {AStar} from '../algorithms/aStar';
-//import {dfs} from '../algorithms/dfs';
-//import {bfs} from '../algorithms/bfs';
+
 
 import './PathfindingVisualizer.css';
 
@@ -324,15 +322,6 @@ export default class PathfindingVisualizer extends Component {
         case 'Dijkstra':
           visitedNodesInOrder = dijkstra(grid, startNode, finishNode);
           break;
-        //case 'AStar':
-        //  visitedNodesInOrder = AStar(grid, startNode, finishNode);
-        //  break;
-        //case 'BFS':
-        //  visitedNodesInOrder = bfs(grid, startNode, finishNode);
-        //  break;
-        //case 'DFS':
-        //  visitedNodesInOrder = dfs(grid, startNode, finishNode);
-        //  break;
         default:
           // should never get here
           break;
@@ -413,21 +402,55 @@ export default class PathfindingVisualizer extends Component {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
               <li className="nav-item">
-                <a
-                  className="nav-link"
-                  href="http://www.github.com/PDahiya123/">
-                  {' '}
-                  PathFinder Visualizer code{' '}
-                </a>
+                <button
+          type="button"
+          className="btn btn-outline-light"
+          onClick={() => this.clearGrid()}>
+          Clear Grid
+        </button>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">
-                  options
-                </a>
+              <button
+          type="button"
+          className="btn btn-outline-warning"
+          onClick={() => this.clearWalls()}>
+          Clear Walls
+        </button>
+              </li>
+              <li className="nav-item">
+              <button
+          type="button"
+          className="btn btn-outline-success"
+          onClick={() => this.visualize('Dijkstra')}>
+          Find Shortest Route (Dijkstra's)
+        </button>
               </li>
             </ul>
           </div>
         </nav>
+
+        <div class="d-flex flex-row flex-wrap m-2 justify-content-around">	
+ 		<div class="d-flex p-2">
+ 			<div class="key wall"></div>  
+ 			<div> Wall</div>
+ 		</div>
+ 		<div class="d-flex p-2">
+ 			<div class="key start"></div>  
+ 			<div>Start</div>
+ 		</div>
+ 		<div class="d-flex p-2">
+ 			<div class="key end"></div>  
+ 			<div>Target</div>
+ 		</div>
+ 		<div class="d-flex p-2">
+ 			<div class="key success"></div>  
+ 			<div>Shortest-Path</div>
+ 		</div>
+ 		<div class="d-flex p-2">
+ 			<div class="key"></div>  
+ 			<div>Unvisited</div>
+ 		</div>
+ 	</div>
 
         <table
           className="grid-container"
@@ -461,53 +484,18 @@ export default class PathfindingVisualizer extends Component {
             })}
           </tbody>
         </table>
-        <button
-          type="button"
-          className="btn btn-danger"
-          onClick={() => this.clearGrid()}>
-          Clear Grid
-        </button>
-        <button
-          type="button"
-          className="btn btn-warning"
-          onClick={() => this.clearWalls()}>
-          Clear Walls
-        </button>
-        <button
-          type="button"
-          className="btn btn-primary"
-          onClick={() => this.visualize('Dijkstra')}>
-          Dijkstra's
-        </button>
-        {/* <button
-          type="button"
-          className="btn btn-primary"
-          onClick={() => this.visualize('AStar')}>
-          A*
-        </button> */}
-        {/* <button
-          type="button"
-          className="btn btn-primary"
-          onClick={() => this.visualize('BFS')}>
-          Bread First Search
-        </button> */}
-        {/* <button
-          type="button"
-          className="btn btn-primary"
-          onClick={() => this.visualize('DFS')}>
-          Depth First Search
-        </button> */}
+        
         {this.state.isDesktopView ? (
           <button
             type="button"
-            className="btn btn-light"
+            className="btn btn-outline-secondary btn-lg btn-block"
             onClick={() => this.toggleView()}>
             Mobile View
           </button>
         ) : (
           <button
             type="button"
-            className="btn btn-dark"
+            className="btn btn-outline-secondary btn-lg btn-block"
             onClick={() => this.toggleView()}>
             Desktop View
           </button>

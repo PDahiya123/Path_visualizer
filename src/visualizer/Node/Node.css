@@ -27,12 +27,12 @@
 @keyframes visitedAnimation {
   0% {
     transform: scale(0.3);
-    background-color: rgba(0, 0, 66, 0.75);
+    background-color: rgba(23, 23, 201, 0.75);
     border-radius: 100%;
   }
 
   50% {
-    background-color: rgba(217, 17, 187, 0.75);
+    background-color: rgba(170, 4, 145, 0.815);
   }
 
   75% {
@@ -76,4 +76,30 @@
     transform: scale(1);
     background-color: rgb(255, 254, 106);
   }
+}
+
+.key {
+	border: 1px solid #79d9ce;
+	width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+.wall {
+	transition : background-color 0.1s ease-in-out;
+	background-color: rgb(12, 53, 71);
+	border-color: rgb(12, 53, 71);
+}
+.start {
+	background-color: green;
+	border-color: green;
+}
+
+.end {
+	background-color: red;
+	border-color: red;
+}
+.success {
+	transition : background-color 0.08s ease-in-out;
+	background-color: rgb(255, 254, 106);
+	border-color: rgb(255, 254, 106);
 }
